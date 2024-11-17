@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurisConnect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <h1><a href="index.html" style="color: white; text-decoration: none;">TurisConnect</a></h1> 
+
+        <div class="nav-buttons" id="navButtons">
+            <button onclick="openModal('loginModal')">Iniciar sesión</button>
+            <button onclick="openModal('registerModal')">Regístrate</button>
+        </div>
+        <div id="userGreeting" style="display: none;"> <!-- Se oculta hasta que el usuario inicie sesión o se registre -->
+            <span id="usernameDisplay"></span>
+            <button onclick="logout()">Cerrar sesión</button>
+        </div>
+    </nav>
+
+    <!-- Sección principal -->
+    <header class="hero">
+        <div class="hero-content">
+            <h2>Conecta con viajeros y guías locales</h2>
+            <p>Explora destinos increíbles y comparte experiencias únicas con una comunidad apasionada por el turismo y la aventura.</p>
+            
+            <section class="items-list">
+                <div id="actionButtons">
+                    <button id="createButton" onclick="toggleModal('formModal')">Crear</button>
+                    <button id="updateButton" onclick="toggleModal('editFormModal')">Actualizar</button>
+                    <button id="deleteButton" onclick="toggleModal('deleteFormModal')">Eliminar</button>
+                </div>
+                
+                <!-- Modal para Crear -->
+                <div id="formModal" class="modal">
+                    <div class="modal-content">
+                        <form id="itemForm" onsubmit="handleCreateItem(event)">
+                            <h2>Crear un Nuevo Item</h2>
+                            <input type="text" id="itemName" placeholder="Nombre" required>
+                            <input type="text" id="itemDescription" placeholder="Descripción" required>
+                            <button type="submit">Crear Item</button>
+                            <button type="button" onclick="toggleModal('formModal')">Cerrar</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Modal para Actualizar -->
+                <div id="editFormModal" class="modal">
+                    <div class="modal-content">
+                        <form id="editItemForm" onsubmit="handleEditItem(event)">
+                            <h2>Actualizar Item</h2>
+                            <input type="text" id="editItemId" placeholder="ID" required>
+                            <input type="text" id="editItemName" placeholder="Nuevo Nombre" required>
+                            <input type="text" id="editItemDescription" placeholder="Nueva Descripción" required>
+                            <button type="submit">Actualizar Item</button>
+                            <button type="button" onclick="toggleModal('editFormModal')">Cerrar</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Modal para Eliminar -->
+                <div id="deleteFormModal" class="modal">
+                    <div class="modal-content">
+                        <form id="deleteItemForm" onsubmit="handleDeleteItem(event)">
+                            <h2>Eliminar Item</h2>
+                            <input type="text" id="deleteItemId" placeholder="Ingrese ID del Item" required>
+                            <button type="submit">Eliminar</button>
+                            <button type="button" onclick="toggleModal('deleteFormModal')">Cerrar</button>
+                        </form>
+                    </div>
+                </div>                
+            </section>    
+        </div>
+        <div class="hero-image-container">
+            <img src="turista.png" alt="Turista en una montaña" class="hero-image">
+        </div>
+    </header>
+
+    <!-- Sección de destinos -->
+    <section class="offers">
+        <h3>Explora nuestros destinos</h3>
+        <div class="offer-gallery">
+            <div class="offer-card">
+                <img src="cuso.png" alt="Cusco">
+                <h4>Cusco</h4>
+                <p>Descubre la histórica ciudad de Cusco, la capital del Imperio Inca.</p>
+                <a href="destination.html?title=Cusco&image=cuso.png&description=Descubre%20la%20histórica%20ciudad%20de%20Cusco,%20la%20capital%20del%20Imperio%20Inca." class="view-more-button">Ver más</a>
+
+            </div>
+            <div class="offer-card">
+                <img src="ica.png" alt="Ica">
+                <h4>Ica</h4>
+                <p>Explora las dunas de arena y el oasis en el desierto de Ica.</p>
+                <a href="destination.html?title=Ica&image=ica.png&description=Explora%20las%20dunas%20de%20arena%20y%20el%20oasis%20en%20el%20desierto%20de%20Ica." class="view-more-button">Ver más</a>
+            </div>
+            <div class="offer-card">
+                <img src="tumbes.jpg" alt="Tumbes">
+                <h4>Tumbes</h4>
+                <p>Disfruta de las playas tropicales y manglares en Tumbes.</p>
+                <a href="destination.html?title=Tumbes&image=tumbes.jpg&description=Disfruta%20de%20las%20playas%20tropicales%20y%20manglares%20en%20Tumbes." class="view-more-button">Ver más</a>
+            </div>
+            <div class="offer-card">
+                <img src="tacna.jpg" alt="Tumbes">
+                <h4>Tacna</h4>
+                <p>Tacna, conocida como la Ciudad Heroica</p>
+                <a href="destination.html?title=Tacna&image=tacna.jpg&description=Tacna,%20conocida%20como%20la%20Ciudad%20Heroica." class="view-more-button">Ver más</a>
+            </div>
+            <div class="offer-card">
+                <img src="are.jpg" alt="Tumbes">
+                <h4>Arequipa</h4>
+                <p>Disfruta de los edificios barrocos contruidos en la capital y algunas atracciones turisticas</p>
+                <a href="destination.html?title=Arequipa&image=are.jpg&description=Disfruta%20de%20los%20edificios%20barrocos%20construidos%20en%20la%20capital%20y%20algunas%20atracciones%20turísticas." class="view-more-button">Ver más</a>
+            </div>
+        </div>
+    </section>
+
+      <!-- Modal de iniciar sesión -->
+      <div id="loginModal" class="modal">
+        <div class="modal-content modal-form">
+            <h2>Bienvenido</h2>
+            <form id="loginForm" onsubmit="loginUser(event)">
+                <label>Email</label>
+                <input type="email" required>
+                <label>Contraseña</label>
+                <input type="password" required>
+                <button class="submit-button" type="submit">Iniciar sesión</button>
+            </form>
+            <button class="close-button" onclick="closeModal('loginModal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal de registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content modal-form">
+            <h2>Únete</h2>
+            <form id="registerForm" onsubmit="registerUser(event)">
+                <label>Nombre</label>
+                <input type="text" id="registerName" required>
+                <label>Email</label>
+                <input type="email" required>
+                <label>Contraseña</label>
+                <input type="password" required>
+                <button class="submit-button" type="submit">Registrarse</button>
+            </form>
+            <button class="close-button" onclick="closeModal('registerModal')">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

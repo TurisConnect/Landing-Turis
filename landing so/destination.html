@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del destino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <h1><a href="index.html" style="color: white; text-decoration: none;">TurisConnect</a></h1>
+        <div id="userGreeting" style="display: none;">
+            <span id="usernameDisplay"></span> 
+            <button onclick="logout()">Cerrar sesión</button>
+        </div>
+        <div id="navButtons" style="display: block;">
+            <button onclick="openLoginForm()">Iniciar sesión</button>
+            <button onclick="openRegisterForm()">Registrarse</button>
+        </div>
+    </nav>
+    
+ <!-- Sección de detalles del destino -->
+ <section class="destination-detail">
+    <div class="destination-info">
+        <img id="destinationImage" src="" alt="Imagen del destino">
+                <div>
+                    <h3 id="destinationTitle">Título del destino</h3>
+                    <p id="destinationDescription">Descripción del destino</p>
+                </div>
+    </div>
+
+    <!-- Sección de reseñas -->
+    <section class="reviews">
+        <h4>Reseñas</h4>
+        <div class="review">
+            <h5>Jane Smith</h5>
+            <p>Increíble experiencia en este lugar lleno de historia.</p>
+            <div class="review-actions">
+                <button class="like-button" onclick="toggleLike(this)">❤️ Me gusta</button>
+                <button class="comment-button" onclick="toggleComments(this)">💬 Comentar</button>
+                <button class="delete-button" onclick="deleteReview(this)">🗑️ Eliminar</button>
+                <span class="like-count" data-type="like-count">0 Me gusta</span>
+            </div>
+            <div class="comment-section" style="display: none;">
+                <div class="comments"></div>
+                <form class="comment-form" onsubmit="addComment(event, this)">
+                    <input type="text" placeholder="Escribe un comentario..." required>
+                    <button type="submit">Publicar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <button onclick="openReviewModal()">Añadir nueva reseña</button>
+</section>
+
+
+    <!-- Modal de nueva reseña -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content modal-form">
+            <h3>Nueva reseña</h3>
+            <form id="reviewForm" onsubmit="addReview(event)">
+                <label for="reviewTitle">Título</label>
+                <input type="text" id="reviewTitle" required>
+                <label for="reviewText">Reseña</label>
+                <textarea id="reviewText" required></textarea>
+                <label>Fotos</label>
+                <input type="file" multiple>
+                <button class="submit-button" type="submit">Publicar</button>
+            </form>
+            <button class="close-button" onclick="closeModal('reviewModal')">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,655 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f9;
+}
+
+/* Barra de navegación */
+.navbar {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.navbar h1 {
+    margin: 0;
+}
+
+.nav-buttons button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    background-color: #fff;
+}
+
+.hero-content {
+    flex: 1;
+    padding: 1em;
+}
+
+.hero-content h2 {
+    font-size: 2.5em;
+    font-family: 'Georgia', serif;
+    color: #333;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    color: #666;
+    margin-top: 0.5em;
+}
+
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2em;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+/* Estilos para los formularios */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+}
+
+.modal-form h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 0.5em;
+}
+
+.modal-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1em;
+}
+
+.modal-form label {
+    font-size: 0.9em;
+    color: #555;
+    align-self: flex-start;
+}
+
+.modal-form input[type="email"],
+.modal-form input[type="text"],
+.modal-form input[type="password"] {
+    width: 100%;
+    padding: 0.7em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 0.7em;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 1em;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #555;
+}
+
+.close-button {
+    background-color: #ddd;
+    color: #333;
+    padding: 0.5em 1em;
+    border: none;
+    cursor: pointer;
+    margin-top: 1em;
+    border-radius: 5px;
+}
+
+/* Estilos de tarjetas de destinos */
+.offer-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.offer-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+    width: 250px;
+    border-radius: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+}
+
+.offer-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.offer-card h4 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+}
+
+.offer-card p {
+    padding: 0 1em;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.view-more-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e94b4b;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: auto;
+}
+
+.view-more-button:hover {
+    background-color: #e94b4b;
+}
+
+/* Reseñas */
+.reviews {
+    width: 90%;
+    margin-top: 2em;
+}
+
+.review {
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review h4 {
+    margin-bottom: 0.5em;
+}
+
+.review img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 0.5em;
+}
+
+/* Reacciones y comentarios */
+.review-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.like-button, .comment-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.like-button {
+    color: #ff5a5f;
+}
+
+.comment-button {
+    color: #333;
+}
+
+.like-count {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Sección de comentarios */
+.comment-section {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.comments {
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.comment {
+    padding: 5px 0;
+    font-size: 0.9em;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.comment-form {
+    display: flex;
+    gap: 10px;
+}
+
+.comment-form input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.comment-form button {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Modal de detalles del destino */
+.modal-content.destination-detail {
+    max-width: 700px;
+    padding: 2em;
+}
+
+.destination-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.destination-info img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.reviews {
+    margin-top: 20px;
+}
+
+.review {
+    background-color: #f9f9f9;
+    padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+}
+
+.review-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.comment-section {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+/* Estilo para el contenedor de acciones de la reseña */
+.review-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap; 
+}
+
+/* Estilos para el botón de "Eliminar" */
+.delete-button {
+    background: #3b3737;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1em;
+}
+
+.delete-button:hover {
+    background: #312e2e;
+}
+
+.like-count {
+    font-size: 0.9em;
+    color: #555;
+    margin-left: auto; 
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos para el formulario dentro del modal */
+#itemForm input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#itemForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+#itemForm button:hover {
+    background-color: #0056b3;
+}
+
+#showFormButton {
+    background-color: #28a745; /* Color verde llamativo */
+    color: white; /* Texto blanco */
+    border: none;
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto hover */
+#showFormButton:hover {
+    background-color: #218838; /* Verde más oscuro */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+/* Efecto al presionar */
+#showFormButton:active {
+    transform: scale(0.97); /* Pequeña contracción */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra más pequeña */
+}
+
+/* Estilo para hacer que el botón sea más visible */
+#showFormButton:focus {
+    outline: 3px solid #80c7a5; /* Borde de enfoque */
+    outline-offset: 2px;
+}
+
+#formModal h2 {
+    color: #000;
+    font-size: 30px;
+}
+
+.items-list {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.items-list h3 {
+    margin-left: 95px;
+    font-size: 30px;
+}
+
+.items-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.items-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    gap: 10px;
+}
+
+.items-list li > div {
+    display: flex;
+    gap: 10px; /* Espaciado entre los botones */
+}
+
+button {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.items-list button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+.edit-button {
+    background-color: #ffc107; /* Amarillo */
+    color: white; /* Texto blanco */
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    outline-offset: 2px;
+    transform: scale(0.97); /* Pequeña contracción */
+}
+
+.delete-button {
+    background-color: #dc3545; /* Rojo */
+    color: white; /* Texto blanco */
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.edit-button:hover {
+    background-color: #e0a800; /* Más oscuro */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Más oscuro */
+}
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#actionButtons button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+#actionButtons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#createButton {
+    background-color: #007bff;
+    color: white;
+    margin-left: 57px;
+}
+
+#createButton:hover {
+    background-color: #0056b3;
+}
+
+#updateButton {
+    background-color: #ffc107;
+    color: white;
+}
+
+#updateButton:hover {
+    background-color: #e0a800;
+}
+
+#deleteButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+#deleteButton:hover {
+    background-color: #c82333;
+}
+
+
+
+
